@@ -55,14 +55,25 @@ import java.util.*;
 //    }
 //}
 
-//【早解5】アンダーライン
+////【早解5】アンダーライン
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        String line = sc.nextLine();
+//        System.out.println(line);
+//        for (int i = 0; i < line.length(); i++) {
+//            System.out.print("^");
+//        }
+//    }
+//}
+
+//【早解6】式の計算
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String line = sc.nextLine();
-        System.out.println(line);
-        for (int i = 0; i < line.length(); i++) {
-            System.out.print("^");
-        }
+        String[] line = sc.nextLine().split(" ");
+        int num1 = Integer.parseInt(line[0]);
+        int num2 = Integer.parseInt(line[2]);
+        System.out.println(num1 + num2);
     }
 }
