@@ -162,19 +162,37 @@ import java.util.*;
 //    }
 //}
 
-//【早解15】気温の変化
+////【早解15】気温の変化
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        String[] line = sc.nextLine().split(" ");
+//        int num1 = Integer.parseInt(line[0]);
+//        int num2 = Integer.parseInt(line[1]);
+//        if (num2 > num1) {
+//            System.out.println("+" + (num2 - num1));
+//        } else if (num2 == num1) {
+//            System.out.println(0);
+//        } else {
+//            System.out.println(num2 - num1);
+//        }
+//    }
+//}
+
+//【早解16】アルファベットの穴の数
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] line = sc.nextLine().split(" ");
-        int num1 = Integer.parseInt(line[0]);
-        int num2 = Integer.parseInt(line[1]);
-        if (num2 > num1) {
-            System.out.println("+" + (num2 - num1));
-        } else if (num2 == num1) {
-            System.out.println(0);
+        String chr = sc.nextLine();
+        String group1 = "A, D, O, P, Q, R";
+        String group2 = "B";
+
+        if (group2.contains(chr)) {
+            System.out.println(2);
+        } else if (group1.contains(chr)) {
+            System.out.println(1);
         } else {
-            System.out.println(num2 - num1);
+            System.out.println(0);
         }
     }
 }
