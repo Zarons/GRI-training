@@ -118,13 +118,22 @@ import java.util.*;
 //    }
 //}
 
-//【早解11】縦書き
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String line = sc.nextLine();
-        for (int i = 0; i < line.length(); i++) {
-            System.out.println(line.charAt(i));
-        }
-    }
-}
+////【早解11】縦書き
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        String line = sc.nextLine();
+//        for (int i = 0; i < line.length(); i++) {
+//            System.out.println(line.charAt(i));
+//        }
+//    }
+//}
+
+////【早解12】山の英語表記
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        String line = sc.nextLine();
+//        System.out.println("Mt. " + line);
+//    }
+//}
