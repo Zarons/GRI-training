@@ -229,18 +229,27 @@ import java.util.*;
 //    }
 //}
 
-//【早解19】可聴領域
+////【早解19】可聴領域
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int hz = sc.nextInt();
+//
+//        if (20 <= hz && hz <= 15000) {
+//            System.out.println("yes");
+//        } else if (15000 < hz && hz <= 20000 ) {
+//            System.out.println("not sure");
+//        } else {
+//            System.out.println("no");
+//        }
+//    }
+//}
+
+//【早解20】駄菓子の大人買い
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int hz = sc.nextInt();
-
-        if (20 <= hz && hz <= 15000) {
-            System.out.println("yes");
-        } else if (15000 < hz && hz <= 20000 ) {
-            System.out.println("not sure");
-        } else {
-            System.out.println("no");
-        }
+        double money = sc.nextDouble();
+        System.out.println((int) money / 10);
     }
 }
