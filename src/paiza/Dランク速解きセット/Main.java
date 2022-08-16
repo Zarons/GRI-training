@@ -147,17 +147,34 @@ import java.util.*;
 //    }
 //}
 
-//【早解14】0から9までのカウンタ
+////【早解14】0から9までのカウンタ
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int num = sc.nextInt();
+//        for (int i = num; i < num + 10; i++) {
+//            if (i >= 10) {
+//                System.out.println(i - 10);
+//            } else {
+//                System.out.println(i);
+//            }
+//        }
+//    }
+//}
+
+//【早解15】気温の変化
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        for (int i = num; i < num + 10; i++) {
-            if (i >= 10) {
-                System.out.println(i - 10);
-            } else {
-                System.out.println(i);
-            }
+        String[] line = sc.nextLine().split(" ");
+        int num1 = Integer.parseInt(line[0]);
+        int num2 = Integer.parseInt(line[1]);
+        if (num2 > num1) {
+            System.out.println("+" + (num2 - num1));
+        } else if (num2 == num1) {
+            System.out.println(0);
+        } else {
+            System.out.println(num2 - num1);
         }
     }
 }
