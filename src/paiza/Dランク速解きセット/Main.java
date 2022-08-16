@@ -31,16 +31,26 @@ import java.util.*;
 //    }
 //}
 
-//【早解3】うなりの周波数
+////【早解3】うなりの周波数
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        String input = sc.nextLine();
+//        String[] numbers = input.split(" ");
+//        int f1 = Integer.parseInt(numbers[0]);
+//        int f2 = Integer.parseInt(numbers[1]);
+//
+//        int result = (Math.max(f1, f2) - Math.min(f1, f2));
+//        System.out.println(result);
+//    }
+//}
+
+//【早解4】たぶん...
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        String[] numbers = input.split(" ");
-        int f1 = Integer.parseInt(numbers[0]);
-        int f2 = Integer.parseInt(numbers[1]);
-
-        int result = (Math.max(f1, f2) - Math.min(f1, f2));
-        System.out.println(result);
+        String line = sc.nextLine();
+        line = line.substring(0, line.indexOf(", maybe."));
+        System.out.println(line + "!!");
     }
 }
