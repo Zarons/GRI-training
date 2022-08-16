@@ -32,13 +32,30 @@ import java.util.*;
 //    }
 //}
 
-//自動車の燃費
+////自動車の燃費
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        String[] line = sc.nextLine().split(" ");
+//        int fuel = Integer.parseInt(line[0]);
+//        int distance = Integer.parseInt(line[1]);
+//        System.out.println(distance / fuel);
+//    }
+//}
+
+//背番号順
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] line = sc.nextLine().split(" ");
-        int fuel = Integer.parseInt(line[0]);
-        int distance = Integer.parseInt(line[1]);
-        System.out.println(distance / fuel);
+        int num = Integer.parseInt(sc.nextLine());
+        Map<Integer, String> players = new HashMap<>();
+        for(int i = 0; i < num; i++) {
+            String[] input = sc.nextLine().split(" ");
+            players.put(Integer.parseInt(input[0]), input[1]);
+        }
+
+        TreeMap<Integer, String> sortedPlayers = new TreeMap<>(players);
+        for (Map.Entry<Integer, String> player : sortedPlayers.entrySet())
+            System.out.println(player.getKey() + " " + player.getValue());
     }
 }
