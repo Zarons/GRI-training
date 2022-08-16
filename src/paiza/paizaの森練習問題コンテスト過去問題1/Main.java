@@ -17,17 +17,28 @@ import java.util.*;
 //    }
 //}
 
-//バイトの休憩時間
+////バイトの休憩時間
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int hour = sc.nextInt();
+//        if (hour <= 6) {
+//            System.out.println("no break");
+//        } else if (hour <= 8) {
+//            System.out.println("45 min");
+//        } else {
+//            System.out.println("60 min");
+//        }
+//    }
+//}
+
+//自動車の燃費
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int hour = sc.nextInt();
-        if (hour <= 6) {
-            System.out.println("no break");
-        } else if (hour <= 8) {
-            System.out.println("45 min");
-        } else {
-            System.out.println("60 min");
-        }
+        String[] line = sc.nextLine().split(" ");
+        int fuel = Integer.parseInt(line[0]);
+        int distance = Integer.parseInt(line[1]);
+        System.out.println(distance / fuel);
     }
 }
