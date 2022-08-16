@@ -137,3 +137,27 @@ import java.util.*;
 //        System.out.println("Mt. " + line);
 //    }
 //}
+
+////【早解13】満員電車の乗車率
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        double num = sc.nextDouble();
+//        System.out.println((int) (num / 140 * 100) + "%");
+//    }
+//}
+
+//【早解14】0から9までのカウンタ
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        for (int i = num; i < num + 10; i++) {
+            if (i >= 10) {
+                System.out.println(i - 10);
+            } else {
+                System.out.println(i);
+            }
+        }
+    }
+}
