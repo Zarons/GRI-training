@@ -21,12 +21,26 @@ import java.util.*;
 //    }
 //}
 
-//【早解2】正n角形の内角
+////【早解2】正n角形の内角
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int num = Integer.parseInt(sc.nextLine());
+//        int result = (180*(num - 2))/num;
+//        System.out.println(result);
+//    }
+//}
+
+//【早解3】うなりの周波数
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int num = Integer.parseInt(sc.nextLine());
-        int result = (180*(num - 2))/num;
+        String input = sc.nextLine();
+        String[] numbers = input.split(" ");
+        int f1 = Integer.parseInt(numbers[0]);
+        int f2 = Integer.parseInt(numbers[1]);
+
+        int result = (Math.max(f1, f2) - Math.min(f1, f2));
         System.out.println(result);
     }
 }
