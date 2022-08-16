@@ -197,20 +197,34 @@ import java.util.*;
 //    }
 //}
 
-//【早解17】騒音レベル
+////【早解17】騒音レベル
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int db = sc.nextInt();
+//
+//        if (db < 30) {
+//            System.out.println("quiet");
+//        } else if (db < 50) {
+//            System.out.println("normal");
+//        } else if (db < 70) {
+//            System.out.println("noisy");
+//        } else {
+//            System.out.println("very noisy");
+//        }
+//    }
+//}
+
+//【早解18】TGIF
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int db = sc.nextInt();
+        String line = sc.nextLine();
 
-        if (db < 30) {
-            System.out.println("quiet");
-        } else if (db < 50) {
-            System.out.println("normal");
-        } else if (db < 70) {
-            System.out.println("noisy");
+        if (line.equals("Friday")) {
+            System.out.println("TGIF");
         } else {
-            System.out.println("very noisy");
+            System.out.println("Still " + line);
         }
     }
 }
