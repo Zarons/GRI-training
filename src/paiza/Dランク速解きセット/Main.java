@@ -215,16 +215,32 @@ import java.util.*;
 //    }
 //}
 
-//【早解18】TGIF
+////【早解18】TGIF
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        String line = sc.nextLine();
+//
+//        if (line.equals("Friday")) {
+//            System.out.println("TGIF");
+//        } else {
+//            System.out.println("Still " + line);
+//        }
+//    }
+//}
+
+//【早解19】可聴領域
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String line = sc.nextLine();
+        int hz = sc.nextInt();
 
-        if (line.equals("Friday")) {
-            System.out.println("TGIF");
+        if (20 <= hz && hz <= 15000) {
+            System.out.println("yes");
+        } else if (15000 < hz && hz <= 20000 ) {
+            System.out.println("not sure");
         } else {
-            System.out.println("Still " + line);
+            System.out.println("no");
         }
     }
 }
