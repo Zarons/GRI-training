@@ -88,11 +88,20 @@ import java.util.*;
 //    }
 //}
 
-//【早解8】靴のサイズ
+////【早解8】靴のサイズ
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        double num = sc.nextDouble();
+//        System.out.println((num - 18) + " " + (num - 18.5));
+//    }
+//}
+
+//【早解9】30人31脚
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        double num = sc.nextDouble();
-        System.out.println((num - 18) + " " + (num - 18.5));
+        int num = sc.nextInt();
+        System.out.println(num + 1);
     }
 }
