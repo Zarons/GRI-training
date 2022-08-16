@@ -106,14 +106,25 @@ import java.util.*;
 //    }
 //}
 
-//【早解10】ボーダー柄
+////【早解10】ボーダー柄
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int num = sc.nextInt();
+//        for (int i = 0; i < num; i++) {
+//            System.out.println("##########");
+//            System.out.println("..........");
+//        }
+//    }
+//}
+
+//【早解11】縦書き
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        for (int i = 0; i < num; i++) {
-            System.out.println("##########");
-            System.out.println("..........");
+        String line = sc.nextLine();
+        for (int i = 0; i < line.length(); i++) {
+            System.out.println(line.charAt(i));
         }
     }
 }
