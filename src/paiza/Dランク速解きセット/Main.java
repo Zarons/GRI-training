@@ -78,12 +78,21 @@ import java.util.*;
 //    }
 //}
 
-//【早解7】鉛筆の濃さ
+////【早解7】鉛筆の濃さ
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int num = sc.nextInt();
+//        String[] pencil = {"6B", "5B", "4B", "3B", "2B", "B", "HB", "F", "H", "2H", "3H", "4H", "5H", "6H", "7H", "8H", "9H"};
+//        System.out.println(pencil[num - 1]);
+//    }
+//}
+
+//【早解8】靴のサイズ
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        String[] pencil = {"6B", "5B", "4B", "3B", "2B", "B", "HB", "F", "H", "2H", "3H", "4H", "5H", "6H", "7H", "8H", "9H"};
-        System.out.println(pencil[num - 1]);
+        double num = sc.nextDouble();
+        System.out.println((num - 18) + " " + (num - 18.5));
     }
 }
