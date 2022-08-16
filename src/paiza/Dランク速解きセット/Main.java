@@ -97,11 +97,23 @@ import java.util.*;
 //    }
 //}
 
-//【早解9】30人31脚
+////【早解9】30人31脚
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int num = sc.nextInt();
+//        System.out.println(num + 1);
+//    }
+//}
+
+//【早解10】ボーダー柄
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
-        System.out.println(num + 1);
+        for (int i = 0; i < num; i++) {
+            System.out.println("##########");
+            System.out.println("..........");
+        }
     }
 }
