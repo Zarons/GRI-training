@@ -45,12 +45,24 @@ import java.util.*;
 //    }
 //}
 
-//【早解4】たぶん...
+////【早解4】たぶん...
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        String line = sc.nextLine();
+//        line = line.substring(0, line.indexOf(", maybe."));
+//        System.out.println(line + "!!");
+//    }
+//}
+
+//【早解5】アンダーライン
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String line = sc.nextLine();
-        line = line.substring(0, line.indexOf(", maybe."));
-        System.out.println(line + "!!");
+        System.out.println(line);
+        for (int i = 0; i < line.length(); i++) {
+            System.out.print("^");
+        }
     }
 }
