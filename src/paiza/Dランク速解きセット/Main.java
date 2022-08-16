@@ -67,13 +67,23 @@ import java.util.*;
 //    }
 //}
 
-//【早解6】式の計算
+////【早解6】式の計算
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        String[] line = sc.nextLine().split(" ");
+//        int num1 = Integer.parseInt(line[0]);
+//        int num2 = Integer.parseInt(line[2]);
+//        System.out.println(num1 + num2);
+//    }
+//}
+
+//【早解7】鉛筆の濃さ
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] line = sc.nextLine().split(" ");
-        int num1 = Integer.parseInt(line[0]);
-        int num2 = Integer.parseInt(line[2]);
-        System.out.println(num1 + num2);
+        int num = sc.nextInt();
+        String[] pencil = {"6B", "5B", "4B", "3B", "2B", "B", "HB", "F", "H", "2H", "3H", "4H", "5H", "6H", "7H", "8H", "9H"};
+        System.out.println(pencil[num - 1]);
     }
 }
