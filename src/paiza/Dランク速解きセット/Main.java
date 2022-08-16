@@ -179,20 +179,38 @@ import java.util.*;
 //    }
 //}
 
-//【早解16】アルファベットの穴の数
+////【早解16】アルファベットの穴の数
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        String chr = sc.nextLine();
+//        String group1 = "A, D, O, P, Q, R";
+//        String group2 = "B";
+//
+//        if (group2.contains(chr)) {
+//            System.out.println(2);
+//        } else if (group1.contains(chr)) {
+//            System.out.println(1);
+//        } else {
+//            System.out.println(0);
+//        }
+//    }
+//}
+
+//【早解17】騒音レベル
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String chr = sc.nextLine();
-        String group1 = "A, D, O, P, Q, R";
-        String group2 = "B";
+        int db = sc.nextInt();
 
-        if (group2.contains(chr)) {
-            System.out.println(2);
-        } else if (group1.contains(chr)) {
-            System.out.println(1);
+        if (db < 30) {
+            System.out.println("quiet");
+        } else if (db < 50) {
+            System.out.println("normal");
+        } else if (db < 70) {
+            System.out.println("noisy");
         } else {
-            System.out.println(0);
+            System.out.println("very noisy");
         }
     }
 }
