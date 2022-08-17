@@ -33,7 +33,7 @@ public class Problem4 {
                         System.out.println(i + " " + j);
                     }
                 }
-            } else if (i > 0 && i < h - 1) {
+            } else if (i < h - 1) {
                 char[] topArray = rows.get(i - 1).toCharArray();
                 char[] botArray = rows.get(i + 1).toCharArray();
                 for (int j = 0; j < w; j++) {
