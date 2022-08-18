@@ -9,27 +9,23 @@ public class Problem3 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String[] initializers = sc.nextLine().split(" ");
-        int h = Integer.parseInt(initializers[0]);
-        int w = Integer.parseInt(initializers[1]);
+        int height = Integer.parseInt(initializers[0]);
+        int width = Integer.parseInt(initializers[1]);
 
-        Map<Integer, String> rows = new HashMap<>();
-        for (int i = 0; i < h; i++) {
+        char[][] coordArray = new char[height][width];
+        for (int row = 0; row < height; row++) {
             String input = sc.nextLine();
-            rows.put(i, input);
+            for (int col = 0; col < width; col++) {
+                coordArray[row][col] = input.charAt(col);
+            }
         }
 
-        for (int i = 0; i < h; i++) {
-            char[] charArray = rows.get(i).toCharArray();
-
-            for (int j = 0; j < w; j++) {
-                if (j == 0 && charArray[1] == '#') {
-                    System.out.println(i + " " + j);
-                } else if (j > 0 && j <= w - 2) {
-                    if (charArray[j - 1] == '#' && charArray[j + 1] == '#') {
-                        System.out.println(i + " " + j);
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
+                if (col == 0 || coordArray[row][col - 1] == '#') {
+                    if (col == width - 1 || coordArray[row][col + 1] == '#') {
+                        System.out.println(row + " " + col);
                     }
-                } else if (j == w - 1 && charArray[j - 1] == '#') {
-                    System.out.println(i + " " + j);
                 }
             }
         }
