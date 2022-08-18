@@ -11,16 +11,19 @@ public class Problem1 {
         int width = Integer.parseInt(initializers[1]);
         int totalGivenCoord =Integer.parseInt(initializers[2]);
 
-        String[] map = new String[height];
+        char[][] coordArray = new char[height][width];
         for (int row = 0; row < height; row++) {
-            map[row] = sc.nextLine();
+            String input = sc.nextLine();
+            for (int col = 0; col < width; col++) {
+                coordArray[row][col] = input.charAt(col);
+            }
         }
 
         for (int i = 1; i <= totalGivenCoord; i++) {
             String[] givenCoord = sc.nextLine().split(" ");
             int givenYCoord = Integer.parseInt(givenCoord[0]);
             int givenXCoord = Integer.parseInt(givenCoord[1]);
-            System.out.println(map[givenYCoord].charAt(givenXCoord));
+            System.out.println(coordArray[givenYCoord][givenXCoord]);
         }
     }
 }
