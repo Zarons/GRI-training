@@ -1,52 +1,36 @@
 package paiza.Aランクレベルアップメニュー;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 //盤面の情報変更
 public class Problem2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String[] initializers = sc.nextLine().split(" ");
-        int h = Integer.parseInt(initializers[0]);
-        int w = Integer.parseInt(initializers[1]);
-        int n = Integer.parseInt(initializers[2]);
+        int height = Integer.parseInt(initializers[0]);
+        int width = Integer.parseInt(initializers[1]);
+        int totalGivenCoord =Integer.parseInt(initializers[2]);
 
-        Map<Integer, String> rows = new HashMap<>();
-        for (int i = 0; i < h; i++) {
+        char[][] coordArray = new char[height][width];
+        for (int row = 0; row < height; row++) {
             String input = sc.nextLine();
-            rows.put(i, input);
+            for (int col = 0; col < width; col++) {
+                coordArray[row][col] = input.charAt(col);
+            }
         }
 
-        Map<Integer, String> searchCoord = new HashMap<>();
-        for (int i = 0; i < n; i++) {
-            String[] input = sc.nextLine().split(" ");
-            String coordX = input[0];
-            String coordY = input[1];
-            searchCoord.put(i, coordX + coordY);
+        for (int i = 1; i <= totalGivenCoord; i++) {
+            String[] givenCoord = sc.nextLine().split(" ");
+            int givenYCoord = Integer.parseInt(givenCoord[0]);
+            int givenXCoord = Integer.parseInt(givenCoord[1]);
+            coordArray[givenYCoord][givenXCoord] = '#';
         }
 
-//        System.out.println(rows);
-//        System.out.println(searchCoord);
-
-        for (int i = 0; i < n; i++) {
-            String coord = searchCoord.get(i);
-            int coordX = Integer.parseInt(String.valueOf(coord.charAt(0)));
-            int coordY = Integer.parseInt(String.valueOf(coord.charAt(1)));
-
-//            System.out.println("XY ->" + coord);
-//            System.out.println("X ->" + coordX);
-//            System.out.println("Y ->" + coordY);
-
-            char[] charArray = rows.get(coordX).toCharArray();
-            charArray[coordY] = '#';
-            String newRow = new String(charArray);
-            rows.replace(coordX, newRow);
-        }
-
-        for (String i : rows.values()) {
-            System.out.println(i);
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
+                System.out.print(coordArray[row][col]);
+            }
+            System.out.println();
         }
     }
 }
