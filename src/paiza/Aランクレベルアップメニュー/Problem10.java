@@ -1,66 +1,28 @@
 package paiza.Aランクレベルアップメニュー;
 
-import java.util.Scanner;
+import java.util.*;
 
 //座標系での向きの変わる移動
 public class Problem10 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] initializers = sc.nextLine().split(" ");
-        int xCoord = Integer.parseInt(initializers[0]);
-        int yCoord = Integer.parseInt(initializers[1]);
-        int maxMove = Integer.parseInt(initializers[2]);
+        int xCoord = sc.nextInt(), yCoord = sc.nextInt(), maxMove = sc.nextInt();
+        sc.nextLine();
 
-        char direction = 'N';
+        char[] direction = {'N', 'E', 'S', 'W'};
+        int dirIndex = 0;
         for (int i = 0; i < maxMove; i++) {
             String turn = sc.nextLine();
-            if (turn.equals("R")) {
-                switch (direction) {
-                    case 'N' -> {
-                        xCoord += 1;
-                        System.out.println(xCoord + " " + yCoord);
-                        direction = 'E';
-                    }
-                    case 'E' -> {
-                        yCoord += 1;
-                        System.out.println(xCoord + " " + yCoord);
-                        direction = 'S';
-                    }
-                    case 'S' -> {
-                        xCoord -= 1;
-                        System.out.println(xCoord + " " + yCoord);
-                        direction = 'W';
-                    }
-                    case 'W' -> {
-                        yCoord -= 1;
-                        System.out.println(xCoord + " " + yCoord);
-                        direction = 'N';
-                    }
-                }
-            } else if (turn.equals("L")) {
-                switch (direction) {
-                    case 'N' -> {
-                        xCoord -= 1;
-                        System.out.println(xCoord + " " + yCoord);
-                        direction = 'W';
-                    }
-                    case 'E' -> {
-                        yCoord -= 1;
-                        System.out.println(xCoord + " " + yCoord);
-                        direction = 'N';
-                    }
-                    case 'S' -> {
-                        xCoord += 1;
-                        System.out.println(xCoord + " " + yCoord);
-                        direction = 'E';
-                    }
-                    case 'W' -> {
-                        yCoord += 1;
-                        System.out.println(xCoord + " " + yCoord);
-                        direction = 'S';
-                    }
-                }
+            if (turn.equals("R")) dirIndex = (1 + dirIndex) % 4;
+            else dirIndex = (3 + dirIndex) % 4;
+
+            switch (direction[dirIndex]) {
+                case 'N' -> yCoord -= 1;
+                case 'E' -> xCoord += 1;
+                case 'S' -> yCoord += 1;
+                case 'W' -> xCoord -= 1;
             }
+            System.out.println(xCoord + " " + yCoord);
         }
     }
 }
