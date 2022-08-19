@@ -6,26 +6,20 @@ import java.util.Scanner;
 public class Problem8 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] initializers = sc.nextLine().split(" ");
-        int yCoord = Integer.parseInt(initializers[0]);
-        int xCoord = Integer.parseInt(initializers[1]);
-        String direction = initializers[2];
+        int yCoord = sc.nextInt();
+        int xCoord = sc.nextInt();
+        String direction = sc.next();
+        sc.nextLine();
 
-        String turn = sc.nextLine();
-        if (turn.equals("R")) {
-            switch (direction) {
-                case "N" -> System.out.println(yCoord + " " + (xCoord + 1));
-                case "S" -> System.out.println(yCoord + " " + (xCoord - 1));
-                case "E" -> System.out.println((yCoord + 1) + " " + xCoord);
-                case "W" -> System.out.println((yCoord - 1) + " " + xCoord);
-            }
-        } else if (turn.equals("L")) {
-            switch (direction) {
-                case "N" -> System.out.println(yCoord + " " + (xCoord - 1));
-                case "S" -> System.out.println(yCoord + " " + (xCoord + 1));
-                case "E" -> System.out.println((yCoord - 1) + " " + xCoord);
-                case "W" -> System.out.println((yCoord + 1) + " " + xCoord);
-            }
+        String checkTurn = sc.nextLine();
+        int turn = checkTurn.equals("R") ? 1 : -1;
+
+        switch (direction) {
+            case "N" -> xCoord += turn;
+            case "E" -> yCoord += turn;
+            case "S" -> xCoord -= turn;
+            case "W" -> yCoord -= turn;
         }
+        System.out.println(yCoord + " " + xCoord);
     }
 }
