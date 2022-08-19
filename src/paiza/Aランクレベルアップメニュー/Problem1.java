@@ -12,15 +12,14 @@ public class Problem1 {
 
         char[][] coordArray = new char[height][width];
         for (int row = 0; row < height; row++) {
-            String input = sc.nextLine();
-            for (int col = 0; col < width; col++) {
-                coordArray[row][col] = input.charAt(col);
-            }
+            coordArray[row] = sc.nextLine().toCharArray();
         }
+
+        System.out.println("TEST"+coordArray[1][1]);
 
         for (int i = 1; i <= totalGivenCoord; i++) {
             int givenYCoord = sc.nextInt();
-            int givenXCoord = sc.nextInt(); sc.nextLine();
+            int givenXCoord = sc.nextInt();
             System.out.println(coordArray[givenYCoord][givenXCoord]);
         }
     }
