@@ -15,8 +15,6 @@ public class Problem1 {
             coordArray[row] = sc.nextLine().toCharArray();
         }
 
-        System.out.println("TEST"+coordArray[1][1]);
-
         for (int i = 1; i <= totalGivenCoord; i++) {
             int givenYCoord = sc.nextInt();
             int givenXCoord = sc.nextInt();
