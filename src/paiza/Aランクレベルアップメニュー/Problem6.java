@@ -1,29 +1,23 @@
 package paiza.Aランクレベルアップメニュー;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 //マップからの座標取得
 public class Problem6 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] initializers = sc.nextLine().split(" ");
-        int height = Integer.parseInt(initializers[0]);
-        int width = Integer.parseInt(initializers[1]);
+        int height = sc.nextInt();
+        int width = sc.nextInt();
+        sc.nextLine();
 
-        Map<Integer, String> rows = new HashMap<>();
-        for (int i = 0; i < height; i++) {
-            String input = sc.nextLine();
-            rows.put(i, input);
+        char[][] coordArray = new char[height][width];
+        for (int row = 0; row < height; row++) {
+            coordArray[row] = sc.nextLine().toCharArray();
         }
 
-        for (int i = 0; i < height; i++) {
-            char[] array = rows.get(i).toCharArray();
-            for (int j = 0; j < width; j++) {
-                if (array[j] == '#') {
-                    System.out.println(i + " " + j);
-                }
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
+                if (coordArray[row][col] == '#') System.out.println(row + " " + col);
             }
         }
     }
