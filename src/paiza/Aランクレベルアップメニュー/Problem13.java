@@ -1,154 +1,45 @@
 package paiza.Aランクレベルアップメニュー;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 //移動が可能かの判定・複数回の移動
 public class Problem13 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] initializers = sc.nextLine().split(" ");
-        int height = Integer.parseInt(initializers[0]);
-        int width = Integer.parseInt(initializers[1]);
-        int yCoord = Integer.parseInt(initializers[2]);
-        int xCoord = Integer.parseInt(initializers[3]);
-        int maxTurnCount = Integer.parseInt(initializers[4]);
+        int height = sc.nextInt();
+        int width = sc.nextInt();
+        int sy = sc.nextInt();
+        int sx = sc.nextInt();
+        int maxRound = sc.nextInt();
+        sc.nextLine();
 
-        String direction = "N";
-
-        Map<Integer, String> rows = new HashMap<>();
-        for (int i = 0; i < height; i++) {
-            String input = sc.nextLine().substring(0, width);
-            rows.put(i, input);
+        char[][] map = new char[height][width];
+        for (int row = 0; row < height; row++) {
+            map[row] = sc.nextLine().toCharArray();
         }
 
-        label:
-        for (int curTurnCount = 1; curTurnCount <= maxTurnCount; curTurnCount++) {
-            //TODO function to change direction and print 座標
-            String turn = sc.nextLine();
-            if (turn.equals("L")) {
-                switch (direction) {
-                    case "N" -> {
-                        char[] row = rows.get(yCoord).toCharArray();
-                        xCoord -= 1;
-                        if (xCoord < 0) {
-                            System.out.println("Stop");
-                            break label;
-                        } else if (row[xCoord] == '#') {
-                            System.out.println("Stop");
-                            break label;
-                        } else {
-                            System.out.println(yCoord + " " + xCoord);
-                            direction = "W";
-                        }
-                    }
-                    case "S" -> {
-                        char[] row = rows.get(yCoord).toCharArray();
-                        xCoord += 1;
-                        if (xCoord > width - 1) {
-                            System.out.println("Stop");
-                            break label;
-                        } else if (row[xCoord] == '#') {
-                            System.out.println("Stop");
-                            break label;
-                        } else {
-                            System.out.println(yCoord + " " + xCoord);
-                            direction = "E";
-                        }
-                    }
-                    case "E" -> {
-                        yCoord -= 1;
-                        if (yCoord < 0) {
-                            System.out.println("Stop");
-                            break label;
-                        }
-                        char[] row = rows.get(yCoord).toCharArray();
-                        if (row[xCoord] == '#') {
-                            System.out.println("Stop");
-                            break label;
-                        } else {
-                            System.out.println(yCoord + " " + xCoord);
-                            direction = "N";
-                        }
-                    }
-                    case "W" -> {
-                        yCoord += 1;
-                        if (yCoord > height - 1) {
-                            System.out.println("Stop");
-                            break label;
-                        }
-                        char[] row = rows.get(yCoord).toCharArray();
-                        if (row[xCoord] == '#') {
-                            System.out.println("Stop");
-                            break label;
-                        } else {
-                            System.out.println(yCoord + " " + xCoord);
-                            direction = "S";
-                        }
-                    }
-                }
-            } else if (turn.equals("R")) {
-                switch (direction) {
-                    case "N" -> {
-                        char[] row = rows.get(yCoord).toCharArray();
-                        xCoord += 1;
-                        if (xCoord > width - 1) {
-                            System.out.println("Stop");
-                            break label;
-                        } else if (row[xCoord] == '#') {
-                            System.out.println("Stop");
-                            break label;
-                        } else {
-                            System.out.println(yCoord + " " + xCoord);
-                            direction = "E";
-                        }
-                    }
-                    case "S" -> {
-                        char[] row = rows.get(yCoord).toCharArray();
-                        xCoord -= 1;
-                        if (xCoord < 0) {
-                            System.out.println("Stop");
-                            break label;
-                        } else if (row[xCoord] == '#') {
-                            System.out.println("Stop");
-                            break label;
-                        } else {
-                            System.out.println(yCoord + " " + xCoord);
-                            direction = "W";
-                        }
-                    }
-                    case "E" -> {
-                        yCoord += 1;
-                        if (yCoord > height - 1) {
-                            System.out.println("Stop");
-                            break label;
-                        }
-                        char[] row = rows.get(yCoord).toCharArray();
-                        if (row[xCoord] == '#') {
-                            System.out.println("Stop");
-                            break label;
-                        } else {
-                            System.out.println(yCoord + " " + xCoord);
-                            direction = "S";
-                        }
-                    }
-                    case "W" -> {
-                        yCoord -= 1;
-                        if (yCoord < 0) {
-                            System.out.println("Stop");
-                            break label;
-                        }
-                        char[] row = rows.get(yCoord).toCharArray();
-                        if (row[xCoord] == '#') {
-                            System.out.println("Stop");
-                            break label;
-                        } else {
-                            System.out.println(yCoord + " " + xCoord);
-                            direction = "N";
-                        }
-                    }
-                }
+        String[] directions = {"N", "E", "S", "W"};
+        int curDir = 0;
+        for (int round = 1; round <= maxRound; round++) {
+            String turn = sc.next();
+            if (turn.equals("R")) {
+                curDir += 1;
+            } else {
+                curDir += 3;
+            }
+
+            switch (directions[curDir % 4]) {
+                case "N" -> sy -= 1;
+                case "E" -> sx += 1;
+                case "S" -> sy += 1;
+                case "W" -> sx -= 1;
+            }
+
+            if (sx < 0 || sx >= width || sy < 0 || sy >= height || map[sy][sx] == '#') {
+                System.out.println("Stop");
+                break;
+            } else {
+                System.out.println(sy + " " + sx);
             }
         }
     }
