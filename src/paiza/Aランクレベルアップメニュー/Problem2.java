@@ -6,31 +6,24 @@ import java.util.*;
 public class Problem2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] initializers = sc.nextLine().split(" ");
-        int height = Integer.parseInt(initializers[0]);
-        int width = Integer.parseInt(initializers[1]);
-        int totalGivenCoord =Integer.parseInt(initializers[2]);
+        int height = sc.nextInt();
+        int width = sc.nextInt();
+        int totalGivenCoord = sc.nextInt();
+        sc.nextLine();
 
         char[][] coordArray = new char[height][width];
         for (int row = 0; row < height; row++) {
-            String input = sc.nextLine();
-            for (int col = 0; col < width; col++) {
-                coordArray[row][col] = input.charAt(col);
-            }
+            coordArray[row] = sc.nextLine().toCharArray();
         }
 
         for (int i = 1; i <= totalGivenCoord; i++) {
-            String[] givenCoord = sc.nextLine().split(" ");
-            int givenYCoord = Integer.parseInt(givenCoord[0]);
-            int givenXCoord = Integer.parseInt(givenCoord[1]);
+            int givenYCoord = sc.nextInt();
+            int givenXCoord = sc.nextInt();
             coordArray[givenYCoord][givenXCoord] = '#';
         }
 
         for (int row = 0; row < height; row++) {
-            for (int col = 0; col < width; col++) {
-                System.out.print(coordArray[row][col]);
-            }
-            System.out.println();
+            System.out.println(coordArray[row]);
         }
     }
 }
