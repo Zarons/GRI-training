@@ -6,10 +6,9 @@ import java.util.*;
 public class Problem1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] initializers = sc.nextLine().split(" ");
-        int height = Integer.parseInt(initializers[0]);
-        int width = Integer.parseInt(initializers[1]);
-        int totalGivenCoord =Integer.parseInt(initializers[2]);
+        int height = sc.nextInt();
+        int width = sc.nextInt();
+        int totalGivenCoord = sc.nextInt(); sc.nextLine();
 
         char[][] coordArray = new char[height][width];
         for (int row = 0; row < height; row++) {
@@ -20,9 +19,8 @@ public class Problem1 {
         }
 
         for (int i = 1; i <= totalGivenCoord; i++) {
-            String[] givenCoord = sc.nextLine().split(" ");
-            int givenYCoord = Integer.parseInt(givenCoord[0]);
-            int givenXCoord = Integer.parseInt(givenCoord[1]);
+            int givenYCoord = sc.nextInt();
+            int givenXCoord = sc.nextInt(); sc.nextLine();
             System.out.println(coordArray[givenYCoord][givenXCoord]);
         }
     }
