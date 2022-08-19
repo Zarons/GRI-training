@@ -8,8 +8,7 @@ public class Problem2 {
         Scanner sc = new Scanner(System.in);
         int height = sc.nextInt();
         int width = sc.nextInt();
-        int totalGivenCoord = sc.nextInt();
-        sc.nextLine();
+        int totalGivenCoord = sc.nextInt(); sc.nextLine();
 
         char[][] coordArray = new char[height][width];
         for (int row = 0; row < height; row++) {
