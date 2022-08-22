@@ -15,7 +15,7 @@ public class Problem4_3 {
             map[row] = sc.nextLine().toCharArray();
         }
 
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < sy * sx; i++) {
             for (int row = 0; row < sy; row++) {
                 for (int col = 0; col < sx; col++) {
                     if (col > 0 && map[row][col] != '#' && map[row][col - 1] == '*') map[row][col] = '*';
