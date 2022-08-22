@@ -3,7 +3,7 @@ package paiza.Aランクレベルアップメニュー;
 import java.util.*;
 
 //座標系での規則的な移動
-public class Problem9 {
+public class Problem2_4 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int xCoord = sc.nextInt();

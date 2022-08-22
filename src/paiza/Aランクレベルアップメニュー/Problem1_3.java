@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 //マップの判定・横
-public class Problem3 {
+public class Problem1_3 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int height = sc.nextInt();

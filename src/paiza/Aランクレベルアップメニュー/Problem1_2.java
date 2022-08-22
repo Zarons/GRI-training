@@ -2,8 +2,8 @@ package paiza.Aランクレベルアップメニュー;
 
 import java.util.*;
 
-//盤面の情報取得
-public class Problem1 {
+//盤面の情報変更
+public class Problem1_2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int height = sc.nextInt();
@@ -18,7 +18,11 @@ public class Problem1 {
         for (int i = 1; i <= totalGivenCoord; i++) {
             int givenYCoord = sc.nextInt();
             int givenXCoord = sc.nextInt();
-            System.out.println(coordArray[givenYCoord][givenXCoord]);
+            coordArray[givenYCoord][givenXCoord] = '#';
+        }
+
+        for (int row = 0; row < height; row++) {
+            System.out.println(coordArray[row]);
         }
     }
 }

@@ -3,7 +3,7 @@ package paiza.Aランクレベルアップメニュー;
 import java.util.Scanner;
 
 //移動が可能かの判定・幅のある移動
-public class Problem14 {
+public class Problem3_4 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int height = sc.nextInt();

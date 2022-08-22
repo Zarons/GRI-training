@@ -3,7 +3,7 @@ package paiza.Aランクレベルアップメニュー;
 import java.util.*;
 
 //座標系での向きの変わる移動
-public class Problem10 {
+public class Problem2_5 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int xCoord = sc.nextInt(), yCoord = sc.nextInt(), maxMove = sc.nextInt();

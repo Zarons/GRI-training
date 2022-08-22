@@ -1,9 +1,11 @@
 package paiza.Aランクレベルアップメニュー;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
-//マップからの座標取得
-public class Problem6 {
+//STEP: 4 マップの判定・縦
+public class Problem1_4 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int height = sc.nextInt();
@@ -17,7 +19,11 @@ public class Problem6 {
 
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
-                if (coordArray[row][col] == '#') System.out.println(row + " " + col);
+                if (row == 0 || coordArray[row - 1][col] == '#') {
+                    if (row == height - 1 || coordArray[row + 1][col] == '#') {
+                        System.out.println(row + " " + col);
+                    }
+                }
             }
         }
     }
