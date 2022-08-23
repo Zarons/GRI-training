@@ -10,7 +10,7 @@ public class Problem3_7 {
         int width = sc.nextInt();
         int sy = sc.nextInt();
         int sx = sc.nextInt();
-        int totalInput = sc.nextInt();
+        int totalTurn = sc.nextInt();
         sc.nextLine();
 
         char[][] map = new char[height][width]; // 二次元配列を作る
@@ -21,28 +21,28 @@ public class Problem3_7 {
         map[sy][sx] = '*'; // マップ上の (sy, sx) のマス
         String[] directions = {"N", "E", "S", "W"};
         int curDir = 0; // 最初は北向け
-        int turnRound = 0;
-        String turn = "";
-        loop:
-        for (int input = 1; input <= totalInput + 1; input++) { // input loop (+1 for after final input)
-            if (input <= totalInput) {
-                turnRound = sc.nextInt(); // first arg -> turn during x round
-                turn = sc.next(); // second arg -> turn x direction
-            }
-            for (int round = 0; round < 100; round++) { // check total round, need to loop for 100x
-                switch (directions[curDir % 4]) {
-                    case "N" -> sy -= 1;
-                    case "E" -> sx += 1;
-                    case "S" -> sy += 1;
-                    case "W" -> sx -= 1;
+        int turnRound = sc.nextInt(); // 最初の向く
+        String turn = sc.next();
+        int turned = 0; // 向いた時のカウント
+        for (int round = 0; round < 100; round++) {
+            if (round == turnRound) {
+                curDir += turn.equals("R") ? 1 : 3; // 向く
+                turned++; // 向いた
+                if (turned < totalTurn) { // 次の向く
+                    turnRound = sc.nextInt();
+                    turn = sc.next();
                 }
-                if (sx < 0 || sx >= width || sy < 0 || sy >= height || map[sy][sx] == '#' || map[sy][sx] == '*') { // 例外 check
-                    break loop;
-                }
-                map[sy][sx] = '*'; // change to '*' after moving to new coord
-                if (round > turnRound && input <= totalInput) break;
             }
-            curDir += turn.equals("R") ? 1 : 3; // change direction
+            switch (directions[curDir % 4]) {
+                case "N" -> sy -= 1;
+                case "E" -> sx += 1;
+                case "S" -> sy += 1;
+                case "W" -> sx -= 1;
+            }
+            if (sx < 0 || sx >= width || sy < 0 || sy >= height || map[sy][sx] == '#' || map[sy][sx] == '*') { // 例外check
+                break;
+            }
+            map[sy][sx] = '*'; // OKであれば、座標の値を変更する
         }
         for (int row = 0; row < height; row++) System.out.println(map[row]);
     }
