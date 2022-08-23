@@ -13,15 +13,14 @@ public class Problem3_7 {
         int totalInput = sc.nextInt();
         sc.nextLine();
 
-        char[][] map = new char[height][width]; // create 2D array map
-        for (int row = 0; row < height; row++) { // input value to 2D array map
+        char[][] map = new char[height][width]; // 二次元配列を作る
+        for (int row = 0; row < height; row++) { // 値を代入する
             map[row] = sc.nextLine().toCharArray();
         }
 
-        map[sy][sx] = '*'; // (round 0)
+        map[sy][sx] = '*'; // マップ上の (sy, sx) のマス
         String[] directions = {"N", "E", "S", "W"};
-        int curDir = 0; // starting direction is N
-        int round = 1; // start from round 1
+        int curDir = 0; // 最初は北向け
         int turnRound = 0;
         String turn = "";
         loop:
@@ -30,7 +29,7 @@ public class Problem3_7 {
                 turnRound = sc.nextInt(); // first arg -> turn during x round
                 turn = sc.next(); // second arg -> turn x direction
             }
-            while (round <= 100) { // check total round
+            for (int round = 0; round < 100; round++) { // check total round, need to loop for 100x
                 switch (directions[curDir % 4]) {
                     case "N" -> sy -= 1;
                     case "E" -> sx += 1;
@@ -41,7 +40,6 @@ public class Problem3_7 {
                     break loop;
                 }
                 map[sy][sx] = '*'; // change to '*' after moving to new coord
-                round++;
                 if (round > turnRound && input <= totalInput) break;
             }
             curDir += turn.equals("R") ? 1 : 3; // change direction
