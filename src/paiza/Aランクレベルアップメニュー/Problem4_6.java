@@ -20,16 +20,14 @@ public class Problem4_6 {
             map[row] = sc.nextLine().toCharArray();
         }
 
-        ArrayList<Point> checkList1 = new ArrayList<>(); // 先攻用
+        ArrayList<Point> checkList1 = new ArrayList<>();
         findStartingCoord(sy, sx, char1, map, checkList1);
-        ArrayList<Point> checkList2 = new ArrayList<>(); // 先攻用
+        ArrayList<Point> checkList2 = new ArrayList<>();
         findStartingCoord(sy, sx, char2, map, checkList2);
 
         while (checkList1.size() + checkList2.size() > 0) {
-            ArrayList<Point> newCoordList1 = new ArrayList<>();
-            checkAllSide(sy, sx, char1, map, checkList1, newCoordList1);
-            ArrayList<Point> newCoordList2 = new ArrayList<>();
-            checkAllSide(sy, sx, char2, map, checkList2, newCoordList2);
+            checkAllSide(sy, sx, char1, map, checkList1);
+            checkAllSide(sy, sx, char2, map, checkList2);
         }
 
         int countA = 0;
@@ -44,11 +42,11 @@ public class Problem4_6 {
         System.out.println(countA > countB ? "A" : "B");// 勝者を決める
     }
 
-    public static void findStartingCoord(int sy, int sx, char inputChar, char[][] map, ArrayList<Point> list) {
+    public static void findStartingCoord(int sy, int sx, char inputChar, char[][] map, ArrayList<Point> checkList) {
         for (int row = 0; row < sy; row++) {
             if (String.valueOf(map[row]).indexOf(inputChar) != -1) {
                 for (int col = 0; col < sx; col++) {
-                    if (map[row][col] == inputChar) list.add(new Point(col, row));
+                    if (map[row][col] == inputChar) checkList.add(new Point(col, row));
                 }
             }
         }
@@ -61,29 +59,22 @@ public class Problem4_6 {
         }
     }
 
-    public static void renewCheckList(ArrayList<Point> checkList, ArrayList<Point> newList) {
-        checkList.subList(0, checkList.size()).clear();
-        checkList.addAll(newList);
-        newList.subList(0, newList.size()).clear();
-    }
-
-    public static void checkAllSide(int sy, int sx, char inputChar, char[][] map, ArrayList<Point> checkList, ArrayList<Point> newCoordList) {
-        int i = 0;
-        while (i < checkList.size()) {
-            Point currentCoord = checkList.get(i);
-            int row = (int) currentCoord.getY();
-            int col = (int) currentCoord.getX();
+    public static void checkAllSide(int sy, int sx, char inputChar, char[][] map, ArrayList<Point> checkList) {
+        ArrayList<Point> newCoordList = new ArrayList<>();
+        for (Point p: checkList) {
+            int row = (int) p.getY();
+            int col = (int) p.getX();
             checkSide(row - 1, col, sy, sx, inputChar, map, newCoordList); // 北側
             checkSide(row, col + 1, sy, sx, inputChar, map, newCoordList); // 東側
             checkSide(row + 1, col, sy, sx, inputChar, map, newCoordList); // 南側
             checkSide(row, col - 1, sy, sx, inputChar, map, newCoordList); // 西側
-            if (i == checkList.size() - 1 && newCoordList.isEmpty()) {
+            if (checkList.indexOf(p) == checkList.size() - 1 && newCoordList.isEmpty()) {
                 checkList.subList(0, checkList.size()).clear();
                 break;
-            } else if (i < checkList.size() - 1) {
-                i++;
-            } else if (i == checkList.size() - 1 && !newCoordList.isEmpty()) {
-                renewCheckList(checkList, newCoordList);
+            } else if (checkList.indexOf(p) == checkList.size() - 1 && !newCoordList.isEmpty()) {
+                checkList.subList(0, checkList.size()).clear();
+                checkList.addAll(newCoordList);
+                newCoordList.subList(0, newCoordList.size()).clear();
                 break;
             }
         }
