@@ -17,44 +17,36 @@ public class Problem5_2 {
         for (int row = 0; row < height; row++) {
             map[row] = sc.nextLine().toCharArray();
         }
-        map[sy][sx] = '*';
-        //上側
-        for (int row = sy - 1; row >= 0; row--) {
-            if (map[row][sx] == '*') {
-                for (int start = row; start < sy; start++) {
-                    map[start][sx] = '*';
+
+        //上と下
+        for (int row = -1; row <= 1; row += 2) { //上は -1　下は 1
+            for (int next = 1; ; next++) {
+                int nextRow = row * next;
+                if (sy + nextRow < 0 || sy + nextRow >= height) break;
+                if (map[sy + nextRow][sx] == '*') {
+                    for (int i = Math.min(sy + nextRow, sy); i <= Math.max(sy + nextRow, sy); i++) {
+                        map[i][sx] = '*';
+                    }
+                    break;
                 }
-                break;
             }
         }
-        //右側
-        for (int col = sx + 1; col < width; col++) {
-            if (map[sy][col] == '*') {
-                for (int start = col; start > sx; start--) {
-                    map[sy][start] = '*';
+        //右と左
+        for (int col = -1; col <= 1; col += 2) { //左は -1 右は 1
+            for (int next = 1; ; next++) {
+                int nextCol = col * next;
+                if (sx + nextCol < 0 || sx + nextCol >= width) break;
+                if (map[sy][sx + nextCol] == '*') {
+                    for (int i = Math.min(sx + nextCol, sx); i <= Math.max(sx + nextCol, sx); i++) {
+                        map[sy][i] = '*';
+                    }
+                    break;
                 }
-                break;
             }
         }
-        //下側
-        for (int row = sy + 1; row < height; row++) {
-            if (map[row][sx] == '*') {
-                for (int start = row; start > sy; start--) {
-                    map[start][sx] = '*';
-                }
-                break;
-            }
-        }
-        //左側から
-        for (int col = sx - 1; col >= 0; col--) {
-            if (map[sy][col] == '*') {
-                for (int start = col; start < sx; start++) {
-                    map[sy][start] = '*';
-                }
-                break;
-            }
-        }
+
         //print new map
+        map[sy][sx] = '*';
         for (int row = 0; row < height; row++) {
             System.out.println(map[row]);
         }
