@@ -20,8 +20,9 @@ public class Problem5_3 {
                 else map[row][col] = '.';
             }
         }
-        map[sy][sx] = '!';
+
         //print new map
+        map[sy][sx] = '!';
         for (int row = 0; row < height; row++) {
             System.out.println(map[row]);
         }
