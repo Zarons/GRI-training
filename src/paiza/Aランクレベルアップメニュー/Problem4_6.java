@@ -26,8 +26,8 @@ public class Problem4_6 {
         findStartingCoord(sy, sx, char2, map, checkList2);
 
         while (checkList1.size() + checkList2.size() > 0) {
-            checkAllSide(sy, sx, char1, map, checkList1);
-            checkAllSide(sy, sx, char2, map, checkList2);
+            checkList1 = checkAllSide(sy, sx, char1, map, checkList1); //こちらは checkList1 = newCoordList1
+            checkList2 = checkAllSide(sy, sx, char2, map, checkList2); //こちらは checkList2 = newCoordList2
         }
 
         int countA = 0;
@@ -39,7 +39,7 @@ public class Problem4_6 {
             }
         }
         System.out.println(countA + " " + countB);
-        System.out.println(countA > countB ? "A" : "B");// 勝者を決める
+        System.out.println(countA > countB ? "A" : "B"); // 勝者を決める
     }
 
     public static void findStartingCoord(int sy, int sx, char inputChar, char[][] map, ArrayList<Point> checkList) {
@@ -59,7 +59,7 @@ public class Problem4_6 {
         }
     }
 
-    public static void checkAllSide(int sy, int sx, char inputChar, char[][] map, ArrayList<Point> checkList) {
+    public static ArrayList<Point> checkAllSide(int sy, int sx, char inputChar, char[][] map, ArrayList<Point> checkList) {
         ArrayList<Point> newCoordList = new ArrayList<>();
         for (Point p: checkList) {
             int row = (int) p.getY();
@@ -72,11 +72,9 @@ public class Problem4_6 {
                 checkList.subList(0, checkList.size()).clear();
                 break;
             } else if (checkList.indexOf(p) == checkList.size() - 1 && !newCoordList.isEmpty()) {
-                checkList.subList(0, checkList.size()).clear();
-                checkList.addAll(newCoordList);
-                newCoordList.subList(0, newCoordList.size()).clear();
                 break;
             }
         }
+        return newCoordList;
     }
 }
