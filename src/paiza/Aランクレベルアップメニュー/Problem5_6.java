@@ -29,117 +29,66 @@ public class Problem5_6 {
             }
         }
 
-        // 右上
-        int col = sx;
-        top_right:
-        // 右上
-        for (int row = sy - 1; row >= 0; row--) {
-            col++;
-            if (col >= width || (map[row][col] == '#')) break;
-            else if (map[row][col] == '*') {
-                while (row < sy) {
-                    row++;
-                    col--;
-                    if (row == sy) break top_right;
-                    map[row][col] = '*';
+        //上と下
+        for (int row = -1; row <= 1; row += 2) { //上は -1　下は 1
+            for (int next = 1; ; next++) {
+                int newRow = sy + (row * next);
+                if (newRow < 0 || newRow >= height || map[newRow][sx] == '#') break;
+                if (map[newRow][sx] == '*') {
+                    for (int i = Math.min(newRow, sy); i <= Math.max(newRow, sy); i++) {
+                        map[i][sx] = '*';
+                    }
+                    break;
                 }
             }
         }
 
-        col = sx; // col リセットする
-        top_left:
-        // 左上
-        for (int row = sy - 1; row >= 0; row--) {
-            col--;
-            if (col < 0 || (map[row][col] == '#')) break;
-            if (map[row][col] == '*') {
-                while (row < sy) {
-                    row++;
-                    col++;
-                    if (row == sy) break top_left;
-                    map[row][col] = '*';
+        //右と左
+        for (int col = -1; col <= 1; col += 2) { //左は -1 右は 1
+            for (int next = 1; ; next++) {
+                int newCol = sx + (col * next);
+                if (newCol < 0 || newCol >= width || map[sy][newCol] == '#') break;
+                if (map[sy][newCol] == '*') {
+                    for (int i = Math.min(newCol, sx); i <= Math.max(newCol, sx); i++) {
+                        map[sy][i] = '*';
+                    }
+                    break;
                 }
             }
         }
 
-        col = sx; // col リセットする
-        bottom_right:
-        // 右下
-        for (int row = sy + 1; row < height; row++) {
-            col++;
-            if (col >= width || (map[row][col] == '#')) break;
-            else if (map[row][col] == '*') {
-                while (row > sy) {
-                    row--;
-                    col--;
-                    if (row == sy) break bottom_right;
-                    map[row][col] = '*';
+        //左上と右下
+        for (int direction = -1; direction <= 1; direction += 2) { //上は -1　下は 1
+            for (int next = 1; ; next++) { //左は -1 右は 1
+                int nextY = sy + (direction * next);
+                int nextX = sx + (direction * next);
+                if (nextY < 0 || nextY >= height || nextX < 0 || nextX >= width  || map[nextY][nextX] == '#') break;
+                if (map[nextY][nextX] == '*') {
+                    for (int i = Math.min(nextY, sy); i <= Math.max(nextY, sy); i++) {
+                        map[i][i + (sx - sy)] = '*';
+                    }
+                    break;
                 }
             }
         }
 
-        col = sx; // col リセットする
-        bottom_left:
-        // 左下
-        for (int row = sy + 1; row < height; row++) {
-            col--;
-            if (col < 0 || (map[row][col] == '#')) break;
-            else if (map[row][col] == '*') {
-                while (row > sy) {
-                    row--;
-                    col++;
-                    if (row == sy) break bottom_left;
-                    map[row][col] = '*';
+        //右上と左下
+        for (int direction = -1; direction <= 1; direction += 2) { //上は -1　下は 1
+            for (int next = 1; ; next++) { //左は -1 右は 1
+                int nextY = sy + (direction * next);
+                int nextX = sx - (direction * next);
+                if (nextY < 0 || nextY >= height || nextX < 0 || nextX >= width  || map[nextY][nextX] == '#') break;
+                if (map[nextY][nextX] == '*') {
+                    for (int i = Math.min(nextY, sy); i <= Math.max(nextY, sy); i++) {
+                        map[i][(sx + sy) - i] = '*';
+                    }
+                    break;
                 }
             }
         }
 
-        //上
-        for (int row = sy - 1; row >= 0; row--) {
-            if (map[row][sx] == '#') break;
-            else if (map[row][sx] == '*') {
-                for (int start = row; start < sy; start++) {
-                    map[start][sx] = '*';
-                }
-                break;
-            }
-        }
-
-        //右
-        for (col = sx + 1; col < width; col++) {
-            if (map[sy][col] == '#') break;
-            else if (map[sy][col] == '*') {
-                for (int start = col; start > sx; start--) {
-                    map[sy][start] = '*';
-                }
-                break;
-            }
-        }
-
-        //下
-        for (int row = sy + 1; row < height; row++) {
-            if (map[row][sx] == '#') break;
-            else if (map[row][sx] == '*') {
-                for (int start = row; start > sy; start--) {
-                    map[start][sx] = '*';
-                }
-                break;
-            }
-        }
-
-        //左
-        for (col = sx - 1; col >= 0; col--) {
-            if (map[sy][col] == '#') break;
-            else if (map[sy][col] == '*') {
-                for (int start = col; start < sx; start++) {
-                    map[sy][start] = '*';
-                }
-                break;
-            }
-        }
-
-        // 結果を表示する
-        map[sy][sx] = '*';
+        // 新しい二次元配列を表示する
+        map[sy][sx] = '*'; // スタート座標
         for (int row = 0; row < height; row++) {
             System.out.println(map[row]);
         }
