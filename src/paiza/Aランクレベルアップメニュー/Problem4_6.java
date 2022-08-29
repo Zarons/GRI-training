@@ -11,7 +11,7 @@ public class Problem4_6 {
         int sy = sc.nextInt();
         int sx = sc.nextInt();
         sc.nextLine();
-        char char1 = sc.next().charAt(0); // スタート char を決める（A / B）
+        char char1 = sc.next().charAt(0); // スタートcharを決める（A / B）
         char char2 = char1 == 'A' ? 'B' : 'A';
         sc.nextLine();
 
@@ -20,14 +20,12 @@ public class Problem4_6 {
             map[row] = sc.nextLine().toCharArray();
         }
 
-        ArrayList<Point> checkList1 = new ArrayList<>();
-        findStartingCoord(sy, sx, char1, map, checkList1);
-        ArrayList<Point> checkList2 = new ArrayList<>();
-        findStartingCoord(sy, sx, char2, map, checkList2);
+        ArrayList<Point> checkList1 = findStartingCoord(sy, sx, char1, map);
+        ArrayList<Point> checkList2 = findStartingCoord(sy, sx, char2, map);
 
         while (checkList1.size() + checkList2.size() > 0) {
-            checkList1 = checkAllSide(sy, sx, char1, map, checkList1); //こちらは checkList1 = newCoordList1
-            checkList2 = checkAllSide(sy, sx, char2, map, checkList2); //こちらは checkList2 = newCoordList2
+            checkList1 = checkAllSide(sy, sx, char1, map, checkList1); // こちらは checkList1 = newCoordList1
+            checkList2 = checkAllSide(sy, sx, char2, map, checkList2); // こちらは checkList2 = newCoordList2
         }
 
         int countA = 0;
@@ -42,7 +40,8 @@ public class Problem4_6 {
         System.out.println(countA > countB ? "A" : "B"); // 勝者を決める
     }
 
-    public static void findStartingCoord(int sy, int sx, char inputChar, char[][] map, ArrayList<Point> checkList) {
+    public static ArrayList<Point> findStartingCoord(int sy, int sx, char inputChar, char[][] map) {
+        ArrayList<Point> checkList = new ArrayList<>();
         for (int row = 0; row < sy; row++) {
             if (String.valueOf(map[row]).indexOf(inputChar) != -1) {
                 for (int col = 0; col < sx; col++) {
@@ -50,6 +49,7 @@ public class Problem4_6 {
                 }
             }
         }
+        return checkList;
     }
 
     public static void checkSide(int row, int col, int sx, int sy, char inputChar, char[][] map, ArrayList<Point> newCoordList) {
@@ -68,12 +68,6 @@ public class Problem4_6 {
             checkSide(row, col + 1, sy, sx, inputChar, map, newCoordList); // 東側
             checkSide(row + 1, col, sy, sx, inputChar, map, newCoordList); // 南側
             checkSide(row, col - 1, sy, sx, inputChar, map, newCoordList); // 西側
-            if (checkList.indexOf(p) == checkList.size() - 1 && newCoordList.isEmpty()) {
-                checkList.subList(0, checkList.size()).clear();
-                break;
-            } else if (checkList.indexOf(p) == checkList.size() - 1 && !newCoordList.isEmpty()) {
-                break;
-            }
         }
         return newCoordList;
     }
