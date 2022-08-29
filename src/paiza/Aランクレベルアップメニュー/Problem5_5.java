@@ -50,7 +50,7 @@ public class Problem5_5 {
         }
 
         col = sx; // col リセットする
-        bottom_right: // 左下
+        bottom_right: // 右下
         for (int row = sy + 1; row < height; row++) {
             col++;
             if (col >= width) break;
