@@ -15,26 +15,22 @@ public class Problem6_3 {
             numArray[i] = sc.nextInt();
         }
 
-        boolean success = false;
-        int length;
-        loop:
-        for (length = 1; length <= numArray.length; length++) {
-            int limit = length;
-            for (int i = 0; i < numArray.length; i++) { // starting index
-                int sum = 0;
-                for (int j = i; j < limit; j++) {
-                    sum += numArray[j];
-                }
-                if (sum >= goal) {
-                    success = true;
-                    break loop;
-                }
-                limit++;
-                if (limit > numArray.length) break;
+        int sum = 0;
+        int ans = numArray.length + 1;
+        int startIndex = 0;
+        int endIndex = 0;
+        sum += numArray[0];
+        while (true) {
+            if (sum < goal) {
+                endIndex++;
+                if (endIndex == totalNumbers) break;
+                sum += numArray[endIndex];
+            } else {
+                ans = Math.min(ans, endIndex - startIndex + 1);
+                sum -= numArray[startIndex];
+                startIndex++;
             }
         }
-
-        if (success) System.out.println(length);
-        else System.out.println(-1);
+        System.out.println(ans == numArray.length + 1 ? -1 : ans);
     }
 }
