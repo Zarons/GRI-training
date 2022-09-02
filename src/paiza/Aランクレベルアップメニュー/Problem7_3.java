@@ -7,8 +7,7 @@ import java.util.Scanner;
 public class Problem7_3 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        BigInteger number = new BigInteger(input);
+        BigInteger number = sc.nextBigInteger();
         System.out.println(number.isProbablePrime(1) ? "YES" : "NO");
     }
 }
