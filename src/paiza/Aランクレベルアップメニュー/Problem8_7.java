@@ -22,9 +22,11 @@ public class Problem8_7 {
         for (int row = 0; row < mapSize; row++) {
             String checkStr = Arrays.toString(map[row]);
             if (!checkStr.contains("1")) {
+                System.out.println(row + "行に「１」整数がない" );
                 isValid = false;
                 break;
             }
+            System.out.println(row + "行に「１」整数が入っている" );
         }
         if (isValid) System.out.println("YES");
         else System.out.println("NO");
